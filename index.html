@@ -70,6 +70,11 @@
     </div>
     
     <div class="form-group">
+        <label for="marketAdjustments">Market Adjustments (positive or negative):</label>
+        <input type="number" id="marketAdjustments" placeholder="Enter market adjustments" />
+    </div>
+    
+    <div class="form-group">
         <label for="profitMargin">Profit Margin (%):</label>
         <input type="number" id="profitMargin" placeholder="Enter profit margin percentage" />
     </div>
@@ -86,6 +91,7 @@
         let sustainabilityPremium = parseFloat(document.getElementById('sustainabilityPremium').value);
         let carbonCost = parseFloat(document.getElementById('carbonCost').value);
         let carbonCredit = parseFloat(document.getElementById('carbonCredit').value);
+        let marketAdjustments = parseFloat(document.getElementById('marketAdjustments').value);
         let profitMargin = parseFloat(document.getElementById('profitMargin').value);
 
         // Calculate Sustainability Premium and Carbon Adjustments
@@ -93,7 +99,7 @@
         let netCarbonCost = carbonCost - carbonCredit;
 
         // Calculate final price before profit margin
-        let finalPriceBeforeMargin = basePrice + premiumAmount + netCarbonCost;
+        let finalPriceBeforeMargin = basePrice + premiumAmount + netCarbonCost + marketAdjustments;
 
         // Add profit margin
         let finalPrice = finalPriceBeforeMargin + (finalPriceBeforeMargin * (profitMargin / 100));
